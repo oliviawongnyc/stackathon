@@ -1,47 +1,44 @@
 import './App.css';
 import React, { useState } from 'react';
-import EntryBackground from './EntryBackground';
-import { Canvas } from 'react-three-fiber';
-import { OrbitControls } from '@react-three/drei';
+import { useStore } from './useStore';
+import { useBox } from '@react-three/cannon';
+// import { Physics } from '@react-three/cannon';
+// import { Canvas } from 'react-three-fiber';
+// import { OrbitControls, Sky, Stars } from '@react-three/drei';
 
-function Box() {
-  const [active, setActive] = useState(false);
+export default function Cube({ position, color, ...props }) {
+  const [cubes] = useStore((state) => [state.cubes]);
+  const [currentColor] = useStore((state) => [state.color]);
+  const [hover, setHover] = useState(null);
+
+  const [ref] = useBox(() => ({
+    type: 'Static',
+    position,
+    ...props,
+  }));
+
   return (
     <mesh
-      onClick={(e) => {
-        setActive(!active);
+      castShadow
+      ref={ref}
+      onPointerMove={(e) => {
+        e.stopPropagation();
+        setHover(Math.floor(e.faceIndex / 2));
       }}
-      position={[0, 2, 0]}
+      onPointerOut={(e) => {
+        setHover(null);
+      }}
     >
+      {[...Array(6)].map((_, index) => (
+        <meshStandardMaterial
+          attachArray='material'
+          key={index}
+          color={hover === index ? 'white' : currentColor}
+          opacity={0.7}
+          transparent={true}
+        />
+      ))}
       <boxBufferGeometry attach='geometry' />
-      <meshLambertMaterial
-        attach='material'
-        color={active ? 'lightblue' : 'blue'}
-      />
     </mesh>
-  );
-}
-
-// function Plane() {
-//   return (
-//     <mesh position={[0, 0, 0]} rotation={[-Math.PI / 2, 0, 0]}>
-//       <planeBufferGeometry attach='geometry' args={[100, 100]} />
-//       <meshLambertMaterial attach='material' color='pink' />
-//     </mesh>
-//   );
-// }
-
-export default function Cube(props) {
-  const { night, day } = props;
-  return (
-    <>
-      <Canvas>
-        {/* <EntryBackground day={day} night={night} /> */}
-        <OrbitControls />
-        <ambientLight intensity={0.25} />
-        <spotLight position={[10, 15, 10]} angle={0.3} />
-        <Box />
-      </Canvas>
-    </>
   );
 }

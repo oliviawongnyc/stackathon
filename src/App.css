@@ -2,6 +2,11 @@
   box-sizing: border-box;
 }
 
+@font-face {
+  font-family: 'Zuka Doodle';
+  src: url('./images/ZukaDoodle.ttf') format('opentype');
+}
+
 html,
 body,
 #root {
@@ -9,6 +14,24 @@ body,
   height: 100%;
   margin: 0;
   padding: 0;
+}
+
+.click-here {
+  position: absolute;
+  font-family: 'Zuka Doodle';
+  font-size: 3em;
+  color: lightskyblue;
+  top: 20px;
+  left: 30px;
+}
+
+.click-here-subhead {
+  position: absolute;
+  font-family: 'Zuka Doodle';
+  font-size: 2em;
+  color: lightskyblue;
+  top: 90px;
+  left: 200px;
 }
 
 .intro-container {
@@ -29,6 +52,8 @@ body,
 .intro-text {
   white-space: pre-line;
   color: white;
+  font-family: 'Zuka Doodle';
+  font-size: 2.25em;
 }
 
 .day-text:hover {
@@ -49,8 +74,46 @@ body,
 
 .back-arrow {
   position: absolute;
-  top: -25px;
+  top: -10px;
   left: -10px;
   z-index: 10;
   width: 150px;
+}
+
+.block-count-night {
+  position: absolute;
+  white-space: nowrap;
+  top: 0.5px;
+  right: 125px;
+  z-index: 10;
+  width: 150px;
+  color: #e9f9f9;
+  font-family: 'Zuka Doodle';
+  font-size: 3em;
+}
+
+.block-count-day {
+  position: absolute;
+  white-space: nowrap;
+  top: 0.5px;
+  right: 125px;
+  z-index: 10;
+  width: 150px;
+  color: #8e8bbc;
+  font-family: 'Zuka Doodle';
+  font-size: 3em;
+}
+
+.menu {
+  position: absolute;
+  z-index: 10;
+  top: 100px;
+  right: 40px;
+}
+
+.menu img {
+  display: flex;
+  justify-content: center;
+  width: 80px;
+  padding: 5px;
 }

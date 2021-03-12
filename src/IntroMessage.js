@@ -1,11 +1,14 @@
 import './App.css';
 import React, { Fragment, useState } from 'react';
 import EntryBackground from './EntryBackground';
-import Cube from './Cube';
+import Environment from './Environment';
 import useSound from 'use-sound';
 import birds from './sounds/birds.mp3';
 import crickets from './sounds/crickets.mp3';
-import arrow from './images/arrow2edited.png';
+import arrowWhite from './images/arrow2white.png';
+import arrowBlue from './images/arrow2blue.png';
+import { useStore } from './useStore';
+import ColorDropdown from './ColorDropdown';
 
 export default function App() {
   const [night, setNight] = useState(false);
@@ -13,6 +16,7 @@ export default function App() {
   const [showIntro, setShowIntro] = useState(true);
   const [playBirds, { stop }] = useSound(birds);
   const [playCrickets, { pause }] = useSound(crickets);
+  const [cubes] = useStore((state) => [state.cubes]);
 
   const showNight = () => {
     setNight(!night);
@@ -84,13 +88,17 @@ export default function App() {
         </div>
       ) : (
         <Fragment>
+          <h1 className={night ? 'block-count-night' : 'block-count-day'}>
+            b l d c t r: {cubes.length}
+          </h1>
+          <ColorDropdown />
           <img
             className='back-arrow'
-            src={arrow}
+            src={night ? arrowWhite : arrowBlue}
             alt='back'
             onClick={handleBack}
           />
-          <Cube day={day} night={night} />
+          <Environment day={day} night={night} />
         </Fragment>
       )}
       <EntryBackground day={day} night={night} />
