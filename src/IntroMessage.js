@@ -1,6 +1,7 @@
 import './App.css';
 import React, { Fragment, useState } from 'react';
 import EntryBackground from './EntryBackground';
+import Cube from './Cube';
 import useSound from 'use-sound';
 import birds from './sounds/birds.mp3';
 import crickets from './sounds/crickets.mp3';
@@ -82,14 +83,15 @@ export default function App() {
           </h1>
         </div>
       ) : (
-        <div>
+        <Fragment>
           <img
             className='back-arrow'
             src={arrow}
             alt='back'
             onClick={handleBack}
           />
-        </div>
+          <Cube day={day} night={night} />
+        </Fragment>
       )}
       <EntryBackground day={day} night={night} />
     </Fragment>
