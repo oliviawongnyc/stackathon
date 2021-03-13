@@ -4,11 +4,11 @@ import { Physics } from '@react-three/cannon';
 import { Canvas } from 'react-three-fiber';
 import { OrbitControls, Sky, Stars } from '@react-three/drei';
 import { useStore } from './useStore';
-import Cube from './Cube';
+import Cubes from './Cubes';
 import Ground from './Ground';
 
 export default function Environment(props) {
-  const { night, day } = props;
+  const { night, day, remove } = props;
 
   const [cubes] = useStore((state) => [state.cubes]);
   console.log('cubes -->', cubes);
@@ -24,7 +24,7 @@ export default function Environment(props) {
             <spotLight position={[10, 15, 10]} angle={0.3} />
             <Physics gravity={[0, -30, 0]}>
               {cubes.map((cube, idx) => (
-                <Cube key={idx} position={cube.pos} />
+                <Cubes key={idx} position={cube.pos} remove={remove} />
               ))}
             </Physics>
             <Ground position={[0, 0.5, 0]} />
@@ -43,7 +43,7 @@ export default function Environment(props) {
           <spotLight position={[10, 15, 10]} angle={0.3} />
           <Physics gravity={[0, -30, 0]}>
             {cubes.map((cube, idx) => (
-              <Cube key={idx} position={cube.pos} />
+              <Cubes key={idx} position={cube.pos} />
             ))}
           </Physics>
           <Ground position={[0, 0.5, 0]} />

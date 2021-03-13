@@ -5,7 +5,7 @@ export const useStore = create((set) => ({
   color: 'white',
   addCube: (x, y, z, color) =>
     set((state) => ({
-      cubes: [...state.cubes, { pos: [x, y, z], color }],
+      cubes: [...state.cubes, { pos: [x, y, z], color: state.color }],
     })),
   removeCube: (x, y, z) =>
     set((state) => ({

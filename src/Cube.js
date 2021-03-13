@@ -1,20 +1,13 @@
 import './App.css';
 import React, { useState } from 'react';
-import { useStore } from './useStore';
 import { useBox } from '@react-three/cannon';
-// import { Physics } from '@react-three/cannon';
-// import { Canvas } from 'react-three-fiber';
-// import { OrbitControls, Sky, Stars } from '@react-three/drei';
 
-export default function Cube({ position, color, ...props }) {
-  const [cubes] = useStore((state) => [state.cubes]);
-  const [currentColor] = useStore((state) => [state.color]);
+export default function Cube({ position, color, addCube, removeCube }) {
   const [hover, setHover] = useState(null);
 
   const [ref] = useBox(() => ({
     type: 'Static',
     position,
-    ...props,
   }));
 
   return (
@@ -28,13 +21,43 @@ export default function Cube({ position, color, ...props }) {
       onPointerOut={(e) => {
         setHover(null);
       }}
+      onClick={(e) => {
+        e.stopPropagation();
+        const clickedFace = Math.floor(e.faceIndex / 2);
+        const { x, y, z } = ref.current.position;
+        console.log('x, y, z -->', x, y, z);
+        if (clickedFace === 0) {
+          e.altKey ? removeCube(x, y, z) : addCube(x + 1, y, z);
+          return;
+        }
+        if (clickedFace === 1) {
+          e.altKey ? removeCube(x, y, z) : addCube(x - 1, y, z);
+          return;
+        }
+        if (clickedFace === 2) {
+          e.altKey ? removeCube(x, y, z) : addCube(x, y + 1, z);
+          return;
+        }
+        if (clickedFace === 3) {
+          e.altKey ? removeCube(x, y, z) : addCube(x, y - 1, z);
+          return;
+        }
+        if (clickedFace === 4) {
+          e.altKey ? removeCube(x, y, z) : addCube(x, y, z + 1);
+          return;
+        }
+        if (clickedFace === 5) {
+          e.altKey ? removeCube(x, y, z) : addCube(x, y, z - 1);
+          return;
+        }
+      }}
     >
       {[...Array(6)].map((_, index) => (
         <meshStandardMaterial
           attachArray='material'
           key={index}
-          color={hover === index ? 'white' : currentColor}
-          opacity={0.7}
+          color={hover === index ? 'white' : color}
+          opacity={0.5}
           transparent={true}
         />
       ))}

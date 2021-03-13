@@ -14,6 +14,7 @@ export default function App() {
   const [night, setNight] = useState(false);
   const [day, setDay] = useState(false);
   const [showIntro, setShowIntro] = useState(true);
+  const [remove, setRemove] = useState(false);
   const [playBirds, { stop }] = useSound(birds);
   const [playCrickets, { pause }] = useSound(crickets);
   const [cubes] = useStore((state) => [state.cubes]);
@@ -46,6 +47,10 @@ export default function App() {
       setDay(false);
       stop();
     }
+  };
+
+  const handleClickAddRemove = () => {
+    setRemove(!remove);
   };
 
   return (
@@ -89,6 +94,9 @@ export default function App() {
       ) : (
         <Fragment>
           <h1 className={night ? 'block-count-night' : 'block-count-day'}>
+            <span onClick={handleClickAddRemove}>
+              {remove ? `a d d / / ` : `r e m o v e  / / `}
+            </span>
             b l d c t r: {cubes.length}
           </h1>
           <ColorDropdown />
@@ -98,7 +106,7 @@ export default function App() {
             alt='back'
             onClick={handleBack}
           />
-          <Environment day={day} night={night} />
+          <Environment day={day} night={night} remove={remove} />
         </Fragment>
       )}
       <EntryBackground day={day} night={night} />
