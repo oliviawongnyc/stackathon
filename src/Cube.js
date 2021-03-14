@@ -1,8 +1,8 @@
 import './App.css';
-import React, { useState } from 'react';
+import React, { useState, memo } from 'react';
 import { useBox } from '@react-three/cannon';
 
-export default function Cube({ position, color, addCube, removeCube }) {
+function Cube({ position, color, addCube, removeCube }) {
   const [hover, setHover] = useState(null);
 
   const [ref] = useBox(() => ({
@@ -65,3 +65,14 @@ export default function Cube({ position, color, addCube, removeCube }) {
     </mesh>
   );
 }
+
+function equalProps(prevProps, nextProps) {
+  const equalPosition =
+    prevProps.position.x === nextProps.position.x &&
+    prevProps.position.y === nextProps.position.y &&
+    prevProps.position.z === nextProps.position.z;
+
+  return equalPosition && prevProps.color === nextProps.color;
+}
+
+export default memo(Cube, equalProps);

@@ -1,5 +1,5 @@
 import './App.css';
-import React, { useState } from 'react';
+import React from 'react';
 import { Physics } from '@react-three/cannon';
 import { Canvas } from 'react-three-fiber';
 import { OrbitControls, Sky, Stars } from '@react-three/drei';
@@ -8,10 +8,8 @@ import Cubes from './Cubes';
 import Ground from './Ground';
 
 export default function Environment(props) {
-  const { night, day } = props;
-
+  const { night } = props;
   const [cubes] = useStore((state) => [state.cubes]);
-  console.log('cubes -->', cubes);
 
   return (
     <>
