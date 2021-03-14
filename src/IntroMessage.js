@@ -14,10 +14,12 @@ import soundOffWhite from './images/largemuteiconedited.png';
 import soundOnBlue from './images/bluelargesoundiconedited.png';
 import soundOffBlue from './images/bluelargemutediconedited.png';
 
-export default function App() {
+export default function IntroMessage() {
   const [night, setNight] = useState(false);
   const [day, setDay] = useState(false);
-  const [sound, setSound] = useState(false);
+  const [soundNight, setSoundNight] = useState(true);
+  const [soundDay, setSoundDay] = useState(true);
+
   const [showIntro, setShowIntro] = useState(true);
   const [playBirds, { stop }] = useSound(birds, {
     loop: true,
@@ -60,19 +62,17 @@ export default function App() {
   };
 
   const handleSoundToggleNight = () => {
-    setSound(!sound);
-    if (!sound) {
-      pause();
-    } else {
+    setSoundNight(!soundNight);
+    pause();
+    if (soundNight) {
       playCrickets();
     }
   };
 
   const handleSoundToggleDay = () => {
-    setSound(!sound);
-    if (!sound) {
-      stop();
-    } else {
+    setSoundDay(!soundDay);
+    stop();
+    if (soundDay) {
       playBirds();
     }
   };
@@ -84,7 +84,7 @@ export default function App() {
           <h1 className='intro-text'>
             welcome to B L D C T Y. do you prefer {''}
             <span
-              className='day-text'
+              className='day-text sun-cursor'
               onMouseOver={() => {
                 showDay();
                 playBirds();
@@ -99,7 +99,7 @@ export default function App() {
             </span>{' '}
             or {''}
             <span
-              className='night-text'
+              className='night-text moon-cursor'
               onMouseOver={() => {
                 showNight();
                 playCrickets();
@@ -127,23 +127,27 @@ export default function App() {
           <h1 className={night ? 'block-count-night' : 'block-count-day'}>
             b l d c t r: {cubes.length}
           </h1>
-          <ColorDropdown />
+          <ColorDropdown night={night} />
           <img
-            className='back-arrow'
+            className={
+              night ? 'back-arrow moon-cursor' : 'back-arrow sun-cursor'
+            }
             src={night ? arrowWhite : arrowBlue}
             alt='back'
             onClick={handleBack}
           />
           <img
-            className='sound-icon'
+            className={
+              night ? 'sound-icon moon-cursor' : 'sound-icon sun-cursor'
+            }
             src={
               night
-                ? sound
-                  ? soundOnWhite
-                  : soundOffWhite
-                : sound
-                ? soundOnBlue
-                : soundOffBlue
+                ? soundNight
+                  ? soundOffWhite
+                  : soundOnWhite
+                : soundDay
+                ? soundOffBlue
+                : soundOnBlue
             }
             alt='sound-toggle'
             onClick={night ? handleSoundToggleNight : handleSoundToggleDay}

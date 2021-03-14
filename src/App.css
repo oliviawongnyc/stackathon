@@ -107,7 +107,7 @@ body,
   right: 100px;
   z-index: 10;
   width: 150px;
-  color: #8e8bbc;
+  color: #414176;
   font-family: 'Zuka Doodle';
   font-size: 3em;
 }
@@ -145,7 +145,19 @@ body,
   right: 190px;
   z-index: 10;
   width: 150px;
-  color: #8e8bbc;
+  color: #414176;
   font-family: 'Zuka Doodle';
   font-size: 1.8em;
+}
+
+.moon-cursor {
+  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>🌙</text></svg>")
+      16 0,
+    auto;
+}
+
+.sun-cursor {
+  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>🌤</text></svg>")
+      16 0,
+    auto;
 }

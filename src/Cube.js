@@ -25,7 +25,6 @@ function Cube({ position, color, addCube, removeCube }) {
         e.stopPropagation();
         const clickedFace = Math.floor(e.faceIndex / 2);
         const { x, y, z } = ref.current.position;
-        console.log('x, y, z -->', x, y, z);
         if (clickedFace === 0) {
           e.altKey ? removeCube(x, y, z) : addCube(x + 1, y, z);
           return;

@@ -9,11 +9,12 @@ import purplecircle from './images/purplecircle.png';
 import whitecircle from './images/whitecircle.png';
 import { useStore } from './useStore';
 
-export default function ColorDropdown() {
+export default function ColorDropdown(props) {
+  const { night } = props;
   const setColor = useStore((state) => state.setColor);
 
   return (
-    <div className='menu'>
+    <div className={night ? 'menu moon-cursor' : 'menu sun-cursor'}>
       <img
         id='red'
         src={redcircle}

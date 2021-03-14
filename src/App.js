@@ -12,7 +12,7 @@ export default function App() {
           <h1 className='click-here' onClick={() => setClickHere(false)}>
             click here to begin...
           </h1>
-          <p className='click-here-subhead'>(and turn on your sound)</p>
+          <p className='click-here-subhead'>(and turn your sound on)</p>
         </div>
       ) : (
         <IntroMessage />
