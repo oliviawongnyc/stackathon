@@ -84,7 +84,7 @@ body,
   position: absolute;
   white-space: nowrap;
   top: 0.5px;
-  right: 375px;
+  right: 100px;
   z-index: 10;
   width: 150px;
   color: #e9f9f9;
@@ -96,7 +96,7 @@ body,
   position: absolute;
   white-space: nowrap;
   top: 0.5px;
-  right: 375px;
+  right: 100px;
   z-index: 10;
   width: 150px;
   color: #8e8bbc;
@@ -107,7 +107,7 @@ body,
 .menu {
   position: absolute;
   z-index: 10;
-  top: 100px;
+  top: 160px;
   right: 40px;
 }
 
@@ -116,4 +116,28 @@ body,
   justify-content: center;
   width: 80px;
   padding: 5px;
+}
+
+.remove-instructions-night {
+  position: absolute;
+  white-space: nowrap;
+  top: 95px;
+  right: 190px;
+  z-index: 10;
+  width: 150px;
+  color: #e9f9f9;
+  font-family: 'Zuka Doodle';
+  font-size: 1.8em;
+}
+
+.remove-instructions-day {
+  position: absolute;
+  white-space: nowrap;
+  top: 95px;
+  right: 190px;
+  z-index: 10;
+  width: 150px;
+  color: #8e8bbc;
+  font-family: 'Zuka Doodle';
+  font-size: 1.8em;
 }

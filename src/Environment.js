@@ -8,7 +8,7 @@ import Cubes from './Cubes';
 import Ground from './Ground';
 
 export default function Environment(props) {
-  const { night, day, remove } = props;
+  const { night, day } = props;
 
   const [cubes] = useStore((state) => [state.cubes]);
   console.log('cubes -->', cubes);
@@ -24,7 +24,7 @@ export default function Environment(props) {
             <spotLight position={[10, 15, 10]} angle={0.3} />
             <Physics gravity={[0, -30, 0]}>
               {cubes.map((cube, idx) => (
-                <Cubes key={idx} position={cube.pos} remove={remove} />
+                <Cubes key={idx} position={cube.pos} />
               ))}
             </Physics>
             <Ground position={[0, 0.5, 0]} />
