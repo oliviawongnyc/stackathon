@@ -6,6 +6,7 @@ import yellowcircle from './images/yellowcircle.png';
 import greencircle from './images/greencircle.png';
 import bluecircle from './images/bluecircle.png';
 import purplecircle from './images/purplecircle.png';
+import whitecircle from './images/whitecircle.png';
 import { useStore } from './useStore';
 
 export default function ColorDropdown() {
@@ -48,6 +49,12 @@ export default function ColorDropdown() {
         src={purplecircle}
         alt='purple'
         onClick={() => setColor('#7349A2')}
+      />
+      <img
+        id='white'
+        src={whitecircle}
+        alt='white'
+        onClick={() => setColor('#FFFFFF')}
       />
     </div>
   );

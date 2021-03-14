@@ -9,13 +9,24 @@ import arrowWhite from './images/arrow2white.png';
 import arrowBlue from './images/arrow2blue.png';
 import { useStore } from './useStore';
 import ColorDropdown from './ColorDropdown';
+import soundOnWhite from './images/largesoundiconedited.png';
+import soundOffWhite from './images/largemuteiconedited.png';
+import soundOnBlue from './images/bluelargesoundiconedited.png';
+import soundOffBlue from './images/bluelargemutediconedited.png';
 
 export default function App() {
   const [night, setNight] = useState(false);
   const [day, setDay] = useState(false);
+  const [sound, setSound] = useState(false);
   const [showIntro, setShowIntro] = useState(true);
-  const [playBirds, { stop }] = useSound(birds);
-  const [playCrickets, { pause }] = useSound(crickets);
+  const [playBirds, { stop }] = useSound(birds, {
+    loop: true,
+    interrupt: true,
+  });
+  const [playCrickets, { pause }] = useSound(crickets, {
+    loop: true,
+    interrupt: true,
+  });
   const [cubes] = useStore((state) => [state.cubes]);
 
   const showNight = () => {
@@ -45,6 +56,24 @@ export default function App() {
     if (setDay) {
       setDay(false);
       stop();
+    }
+  };
+
+  const handleSoundToggleNight = () => {
+    setSound(!sound);
+    if (!sound) {
+      pause();
+    } else {
+      playCrickets();
+    }
+  };
+
+  const handleSoundToggleDay = () => {
+    setSound(!sound);
+    if (!sound) {
+      stop();
+    } else {
+      playBirds();
     }
   };
 
@@ -104,6 +133,20 @@ export default function App() {
             src={night ? arrowWhite : arrowBlue}
             alt='back'
             onClick={handleBack}
+          />
+          <img
+            className='sound-icon'
+            src={
+              night
+                ? sound
+                  ? soundOnWhite
+                  : soundOffWhite
+                : sound
+                ? soundOnBlue
+                : soundOffBlue
+            }
+            alt='sound-toggle'
+            onClick={night ? handleSoundToggleNight : handleSoundToggleDay}
           />
           <Environment day={day} night={night} />
         </Fragment>
