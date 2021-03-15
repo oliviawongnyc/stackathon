@@ -19,9 +19,6 @@ export default function IntroMessage() {
   const [day, setDay] = useState(false);
   const [soundNight, setSoundNight] = useState(true);
   const [soundDay, setSoundDay] = useState(true);
-
-  console.log('soundDay -->', soundDay);
-
   const [showIntro, setShowIntro] = useState(true);
   const [playBirds, { stop }] = useSound(birds, {
     loop: true,

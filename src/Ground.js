@@ -11,10 +11,7 @@ export default function Ground(props) {
   texture.wrapT = RepeatWrapping;
   texture.repeat.set(100, 100);
 
-  const [addCube, activeColor] = useStore((state) => [
-    state.addCube,
-    state.color,
-  ]);
+  const [addCube] = useStore((state) => [state.addCube]);
 
   let intensity;
 
@@ -26,8 +23,7 @@ export default function Ground(props) {
 
   const handleClick = (e) => {
     const [x, y, z] = Object.values(e.point).map((coord) => Math.ceil(coord));
-    console.log(`clicked:${x}, ${y}, ${z}`);
-    addCube(x, y, z, activeColor);
+    addCube(x, y, z);
   };
 
   return (

@@ -55,7 +55,7 @@ function Cube({ position, color, addCube, removeCube }) {
         <meshStandardMaterial
           attachArray='material'
           key={index}
-          color={hover === index ? 'white' : color}
+          color={hover === index ? 'lightgrey' : color}
           opacity={0.5}
           transparent={true}
         />
