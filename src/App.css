@@ -94,7 +94,7 @@ body,
   position: absolute;
   white-space: nowrap;
   top: 0.5px;
-  right: 100px;
+  right: 125px;
   z-index: 10;
   width: 150px;
   color: #e9f9f9;
@@ -106,7 +106,7 @@ body,
   position: absolute;
   white-space: nowrap;
   top: 0.5px;
-  right: 100px;
+  right: 125px;
   z-index: 10;
   width: 150px;
   color: #414176;
@@ -132,7 +132,7 @@ body,
   position: absolute;
   white-space: nowrap;
   top: 95px;
-  right: 190px;
+  right: 210px;
   z-index: 10;
   width: 150px;
   color: #e9f9f9;
@@ -144,7 +144,7 @@ body,
   position: absolute;
   white-space: nowrap;
   top: 95px;
-  right: 190px;
+  right: 210px;
   z-index: 10;
   width: 150px;
   color: #414176;
