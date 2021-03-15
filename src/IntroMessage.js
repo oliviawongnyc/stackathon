@@ -73,7 +73,6 @@ export default function IntroMessage() {
   const handleSoundToggleDay = () => {
     setSoundDay(!soundDay);
     if (soundDay) {
-      console.log('in here');
       stop();
     }
     if (!soundDay) {
