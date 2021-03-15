@@ -9,10 +9,18 @@ export default function App() {
     <Fragment>
       {clickHere ? (
         <div>
-          <h1 className='click-here' onClick={() => setClickHere(false)}>
+          <h1
+            className='click-here stars-cursor'
+            onClick={() => setClickHere(false)}
+          >
             click here to begin...
           </h1>
-          <p className='click-here-subhead'>(and turn your sound on)</p>
+          <p
+            className='click-here-subhead stars-cursor'
+            onClick={() => setClickHere(false)}
+          >
+            (and turn your sound on)
+          </p>
         </div>
       ) : (
         <IntroMessage />

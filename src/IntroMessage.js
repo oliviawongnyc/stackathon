@@ -20,6 +20,8 @@ export default function IntroMessage() {
   const [soundNight, setSoundNight] = useState(true);
   const [soundDay, setSoundDay] = useState(true);
 
+  console.log('soundDay -->', soundDay);
+
   const [showIntro, setShowIntro] = useState(true);
   const [playBirds, { stop }] = useSound(birds, {
     loop: true,
@@ -63,16 +65,21 @@ export default function IntroMessage() {
 
   const handleSoundToggleNight = () => {
     setSoundNight(!soundNight);
-    pause();
     if (soundNight) {
+      pause();
+    }
+    if (!soundNight) {
       playCrickets();
     }
   };
 
   const handleSoundToggleDay = () => {
     setSoundDay(!soundDay);
-    stop();
     if (soundDay) {
+      console.log('in here');
+      stop();
+    }
+    if (!soundDay) {
       playBirds();
     }
   };
