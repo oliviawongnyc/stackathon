@@ -9,10 +9,10 @@ export default function Cubes() {
     state.removeCube,
   ]);
 
-  return cubes.map((cube, idx) => {
+  return cubes.map((cube) => {
     return (
       <Cube
-        key={idx}
+        key={cube.key}
         color={cube.color}
         position={cube.pos}
         addCube={addCube}

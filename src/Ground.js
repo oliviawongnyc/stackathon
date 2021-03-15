@@ -28,7 +28,7 @@ export default function Ground(props) {
 
   return (
     <mesh
-      position={[0, -2, 0]}
+      position={[0, -1, 0]}
       rotation={[-Math.PI / 2, 0, 0]}
       onClick={handleClick}
     >
